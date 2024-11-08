@@ -32,7 +32,8 @@ public class JavaLoader extends ClassLoader {
 
 	private final Map<String, byte[]> unloaded = new HashMap<>();
 
-	public JavaLoader() {
+	public JavaLoader(ClassLoader parent) {
+		super(parent);
 	}
 
 	public LuaFunction load(Prototype p, String classname, String filename, LuaValue env) {

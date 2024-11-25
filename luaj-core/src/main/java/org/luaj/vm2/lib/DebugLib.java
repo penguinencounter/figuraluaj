@@ -21,22 +21,7 @@
 ******************************************************************************/
 package org.luaj.vm2.lib;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.Lua;
-import org.luaj.vm2.LuaBoolean;
-import org.luaj.vm2.LuaClosure;
-import org.luaj.vm2.LuaError;
-import org.luaj.vm2.LuaFunction;
-import org.luaj.vm2.LuaNil;
-import org.luaj.vm2.LuaNumber;
-import org.luaj.vm2.LuaString;
-import org.luaj.vm2.LuaTable;
-import org.luaj.vm2.LuaThread;
-import org.luaj.vm2.LuaUserdata;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Print;
-import org.luaj.vm2.Prototype;
-import org.luaj.vm2.Varargs;
+import org.luaj.vm2.*;
 
 /**
  * Subclass of {@link LibFunction} which implements the lua standard
@@ -523,7 +508,7 @@ public class DebugLib extends TwoArgFunction {
 		} catch (LuaError e) {
 			throw e;
 		} catch (RuntimeException e) {
-			throw new LuaError(e);
+			throw new LuaError.LuaVMError(e);
 		} finally {
 			s.inhook = false;
 		}

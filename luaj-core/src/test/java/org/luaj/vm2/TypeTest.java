@@ -563,7 +563,7 @@ class TypeTest {
 
 	// ===================== Optional argument conversion =======================
 
-	private void throwsError(LuaValue obj, String method, Class argtype, Object argument) {
+	private void throwsError(LuaValue obj, String method, Class<?> argtype, Object argument) {
 		try {
 			obj.getClass().getMethod(method, argtype).invoke(obj, argument);
 		} catch (InvocationTargetException e) {
@@ -864,7 +864,7 @@ class TypeTest {
 		assertEquals(sampledata, userdatacls.optuserdata(null));
 	}
 
-	private void throwsErrorOptUserdataClass(LuaValue obj, Class arg1, Object arg2) {
+	private void throwsErrorOptUserdataClass(LuaValue obj, Class<?> arg1, Object arg2) {
 		try {
 			obj.getClass().getMethod("optuserdata", Class.class, Object.class).invoke(obj, arg1, arg2);
 		} catch (InvocationTargetException e) {
@@ -1225,7 +1225,7 @@ class TypeTest {
 		assertEquals(sampledata, userdatacls.checkuserdata());
 	}
 
-	private void throwsErrorReqCheckUserdataClass(LuaValue obj, Class arg) {
+	private void throwsErrorReqCheckUserdataClass(LuaValue obj, Class<?> arg) {
 		try {
 			obj.getClass().getMethod("checkuserdata", Class.class).invoke(obj, arg);
 		} catch (InvocationTargetException e) {

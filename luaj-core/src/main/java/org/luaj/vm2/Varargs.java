@@ -344,7 +344,7 @@ public abstract class Varargs {
 	 * @exception LuaError if the argument is not a userdata or from whose
 	 *                     instance c is not assignable
 	 */
-	public Object optuserdata(int i, Class c, Object defval) { return arg(i).optuserdata(c, defval); }
+	public <T> T optuserdata(int i, Class<T> c, T defval) { return arg(i).optuserdata(c, defval); }
 
 	/**
 	 * Return argument i as a LuaValue if it exists, or {@code defval}.
@@ -502,7 +502,7 @@ public abstract class Varargs {
 	 * @exception LuaError if the argument is not a userdata or from whose
 	 *                     instance c is not assignable
 	 */
-	public Object checkuserdata(int i, Class c) { return arg(i).checkuserdata(c); }
+	public <T> T checkuserdata(int i, Class<T> c) { return arg(i).checkuserdata(c); }
 
 	/**
 	 * Return argument i as a LuaValue if it exists, or throw an error.
@@ -652,7 +652,7 @@ public abstract class Varargs {
 	 * @return java Object value if argument i is a userdata whose instance
 	 *         Class c or a subclass, otherwise null
 	 */
-	public Object touserdata(int i, Class c) { return arg(i).touserdata(c); }
+	public <T> T touserdata(int i, Class<T> c) { return arg(i).touserdata(c); }
 
 	/**
 	 * Convert the list of varargs values to a human readable java String.

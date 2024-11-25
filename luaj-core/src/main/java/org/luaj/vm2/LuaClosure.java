@@ -595,7 +595,7 @@ public class LuaClosure extends LuaFunction {
 				processErrorHooks(le, p, pc);
 			throw le;
 		} catch (Exception e) {
-			LuaError le = new LuaError(e);
+			LuaError le = new LuaError.LuaVMError(e);
 			processErrorHooks(le, p, pc);
 			throw le;
 		} finally {
@@ -612,8 +612,9 @@ public class LuaClosure extends LuaFunction {
 	 * Run the error hook if there is one
 	 *
 	 * @param msg the message to use in error hook processing.
+	 * @param le
 	 */
-	String errorHook(String msg, int level) {
+	String errorHook(String msg, int level, LuaError le) {
 		if (globals == null)
 			return msg;
 		final LuaThread r = globals.running;
@@ -649,7 +650,7 @@ public class LuaClosure extends LuaFunction {
 			}
 		}
 		le.fileline = file + ":" + line;
-		le.traceback = errorHook(le.getMessage(), le.level);
+		le.traceback = errorHook(le.getMessage(), le.level, le);
 	}
 
 	private UpValue findupval(LuaValue[] stack, short idx, UpValue[] openups) {

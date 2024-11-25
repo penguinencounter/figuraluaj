@@ -175,9 +175,9 @@ public class LuajavaLib extends VarArgFunction {
 		} catch (LuaError e) {
 			throw e;
 		} catch (InvocationTargetException ite) {
-			throw new LuaError(ite.getTargetException());
+			throw new LuaError.LuaVMError(ite.getTargetException());
 		} catch (Exception e) {
-			throw new LuaError(e);
+			throw new LuaError.LuaVMError(e);
 		}
 	}
 

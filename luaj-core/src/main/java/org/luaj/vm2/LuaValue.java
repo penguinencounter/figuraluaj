@@ -472,7 +472,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #optuserdata(Class, Object)
 	 * @see #TUSERDATA
 	 */
-	public boolean isuserdata(Class c) { return false; }
+	public boolean isuserdata(Class<?> c) { return false; }
 
 	/**
 	 * Convert to boolean false if {@link #NIL} or {@link #FALSE}, true if
@@ -625,7 +625,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #isuserdata(Class)
 	 * @see #TUSERDATA
 	 */
-	public Object touserdata(Class c) { return null; }
+	public <T> T touserdata(Class<T> c) { return null; }
 
 	/**
 	 * Convert the value to a human readable string using {@link #tojstring()}
@@ -693,7 +693,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #isboolean()
 	 * @see #TBOOLEAN
 	 */
-	public boolean optboolean(boolean defval) { argerror("boolean"); return false; }
+	public boolean optboolean(boolean defval) { argTypeError(TBOOLEAN); return false; }
 
 	/**
 	 * Check that optional argument is a closure and return as
@@ -882,7 +882,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #isthread()
 	 * @see #TTHREAD
 	 */
-	public LuaThread optthread(LuaThread defval) { argerror("thread"); return null; }
+	public LuaThread optthread(LuaThread defval) { argTypeError(TTHREAD); return null; }
 
 	/**
 	 * Check that optional argument is a userdata and return the Object instance
@@ -915,7 +915,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #optuserdata(Object)
 	 * @see #TUSERDATA
 	 */
-	public Object optuserdata(Class c, Object defval) { argerror(c.getName()); return null; }
+	public <T> T optuserdata(Class<T> c, T defval) { argerror(c.getName()); return null; }
 
 	/**
 	 * Perform argument check that this is not nil or none.
@@ -940,7 +940,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #optboolean(boolean)
 	 * @see #TBOOLEAN
 	 */
-	public boolean checkboolean() { argerror("boolean"); return false; }
+	public boolean checkboolean() { argTypeError(TBOOLEAN); return false; }
 
 	/**
 	 * Check that the value is a {@link LuaClosure} , or throw {@link LuaError}
@@ -956,7 +956,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #isclosure()
 	 * @see #TFUNCTION
 	 */
-	public LuaClosure checkclosure() { argerror("function"); return null; }
+	public LuaClosure checkclosure() { argTypeError(TFUNCTION); return null; }
 
 	/**
 	 * Check that the value is numeric and return the value as a double, or
@@ -974,7 +974,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #optdouble(double)
 	 * @see #TNUMBER
 	 */
-	public double checkdouble() { argerror("number"); return 0; }
+	public double checkdouble() { argTypeError(TNUMBER); return 0; }
 
 	/**
 	 * Check that the value is a function , or throw {@link LuaError} if not
@@ -987,7 +987,7 @@ abstract public class LuaValue extends Varargs {
 	 * @throws LuaError if not a function
 	 * @see #checkclosure()
 	 */
-	public LuaFunction checkfunction() { argerror("function"); return null; }
+	public LuaFunction checkfunction() { argTypeError(TFUNCTION); return null; }
 
 	/**
 	 * Check that the value is a Globals instance, or throw {@link LuaError} if
@@ -1075,7 +1075,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #optnumber(LuaNumber)
 	 * @see #TNUMBER
 	 */
-	public LuaNumber checknumber() { argerror("number"); return null; }
+	public LuaNumber checknumber() { argTypeError(TNUMBER); return null; }
 
 	/**
 	 * Check that the value is numeric, and return as a LuaNumber if so, or
@@ -1111,7 +1111,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #isstring
 	 * @see #TSTRING
 	 */
-	public String checkjstring() { argerror("string"); return null; }
+	public String checkjstring() { argTypeError(TSTRING); return null; }
 
 	/**
 	 * Check that this is a lua string, or throw {@link LuaError} if it is not.
@@ -1129,7 +1129,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #isstring()
 	 * @see #TSTRING
 	 */
-	public LuaString checkstring() { argerror("string"); return null; }
+	public LuaString checkstring() { argTypeError(TSTRING); return null; }
 
 	/**
 	 * Check that this is a {@link LuaTable}, or throw {@link LuaError} if it is
@@ -1141,7 +1141,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #opttable(LuaTable)
 	 * @see #TTABLE
 	 */
-	public LuaTable checktable() { argerror("table"); return null; }
+	public LuaTable checktable() { argTypeError(TTABLE); return null; }
 
 	/**
 	 * Check that this is a {@link LuaThread}, or throw {@link LuaError} if it
@@ -1153,7 +1153,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #optthread(LuaThread)
 	 * @see #TTHREAD
 	 */
-	public LuaThread checkthread() { argerror("thread"); return null; }
+	public LuaThread checkthread() { argTypeError(TTHREAD); return null; }
 
 	/**
 	 * Check that this is a {@link LuaUserdata}, or throw {@link LuaError} if it
@@ -1166,7 +1166,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #checkuserdata(Class)
 	 * @see #TUSERDATA
 	 */
-	public Object checkuserdata() { argerror("userdata"); return null; }
+	public Object checkuserdata() { argTypeError(TUSERDATA); return null; }
 
 	/**
 	 * Check that this is a {@link LuaUserdata}, or throw {@link LuaError} if it
@@ -1179,7 +1179,7 @@ abstract public class LuaValue extends Varargs {
 	 * @see #checkuserdata()
 	 * @see #TUSERDATA
 	 */
-	public Object checkuserdata(Class c) { argerror("userdata"); return null; }
+	public <T> T checkuserdata(Class<T> c) { argTypeError(TUSERDATA); return null; }
 
 	/**
 	 * Check that this is not the value {@link #NIL}, or throw {@link LuaError}
@@ -1233,6 +1233,16 @@ abstract public class LuaValue extends Varargs {
 		throw new LuaError("bad argument: " + expected + " expected, got " + typename());
 	}
 
+	protected LuaValue argTypeError(int expectedType) {
+		throw new LuaError.LuaTypeError(
+				type(),
+				typename(),
+				expectedType,
+				TYPE_NAMES[expectedType],
+				"bad argument"
+		);
+	}
+
 	/**
 	 * Throw a {@link LuaError} indicating an invalid argument was supplied to a
 	 * function
@@ -1253,6 +1263,15 @@ abstract public class LuaValue extends Varargs {
 	 * @throws LuaError in all cases
 	 */
 	protected LuaValue typerror(String expected) { throw new LuaError(expected + " expected, got " + typename()); }
+	protected LuaValue typerror(int expectedType) {
+		throw new LuaError.LuaTypeError(
+				type(),
+				typename(),
+				expectedType,
+				TYPE_NAMES[expectedType],
+				"type error"
+		);
+	}
 
 	/**
 	 * Throw a {@link LuaError} indicating an operation is not implemented
@@ -2353,7 +2372,7 @@ abstract public class LuaValue extends Varargs {
 	 * @throws LuaError if {@link #CALL} metatag is not defined.
 	 */
 	protected LuaValue callmt() {
-		return checkmetatag(CALL, "attempt to call ");
+		return getOperatorOrThrow(CALL, "call");
 	}
 
 	/**
@@ -2375,7 +2394,7 @@ abstract public class LuaValue extends Varargs {
 	 * @throws LuaError if {@code this} is not a table or string, and has no
 	 *                  {@link #UNM} metatag
 	 */
-	public LuaValue neg() { return checkmetatag(UNM, "attempt to perform arithmetic on ").call(this); }
+	public LuaValue neg() { return getOperatorOrThrow(UNM, "perform arithmetic on").call(this); }
 
 	/**
 	 * Length operator: return lua length of object {@code (#this)} including
@@ -2386,7 +2405,7 @@ abstract public class LuaValue extends Varargs {
 	 * @throws LuaError if {@code this} is not a table or string, and has no
 	 *                  {@link #LEN} metatag
 	 */
-	public LuaValue len() { return checkmetatag(LEN, "attempt to get length of ").call(this); }
+	public LuaValue len() { return getOperatorOrThrow(LEN, "get length of").call(this); }
 
 	/**
 	 * Length operator: return lua length of object {@code (#this)} including
@@ -3907,6 +3926,12 @@ abstract public class LuaValue extends Varargs {
 		return h;
 	}
 
+	protected LuaValue getOperatorOrThrow(LuaValue operatorTag, String friendlyName) {
+		LuaValue h = this.metatag(operatorTag);
+		if (h.isnil()) throw new LuaError.LuaBadOperatorTargetError(operatorTag.checkjstring(), friendlyName, type(), typename());
+		return h;
+	}
+
 	/** Construct a Metatable instance from the given LuaValue */
 	protected static Metatable metatableOf(LuaValue mt) {
 		if (mt != null && mt.istable()) {
@@ -3933,7 +3958,7 @@ abstract public class LuaValue extends Varargs {
 	 * @throws LuaError when called.
 	 */
 	private void indexerror(String key) {
-		error("attempt to index ? (a " + typename() + " value) with key '" + key + "'");
+		throw new LuaError.LuaBadIndexTargetError(type(), typename(), key);
 	}
 
 	/**

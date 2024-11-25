@@ -72,7 +72,7 @@ class JavaConstructor extends JavaMember {
 		try {
 			return CoerceJavaToLua.coerce(constructor.newInstance(a));
 		} catch (InvocationTargetException e) {
-			throw new LuaError(e.getTargetException());
+			throw new LuaError.LuaVMError(e.getTargetException());
 		} catch (Exception e) {
 			return LuaValue.error("coercion error " + e);
 		}

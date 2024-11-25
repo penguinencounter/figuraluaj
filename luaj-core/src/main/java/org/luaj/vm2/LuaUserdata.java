@@ -63,22 +63,24 @@ public class LuaUserdata extends LuaValue {
 	public boolean isuserdata() { return true; }
 
 	@Override
-	public boolean isuserdata(Class c) { return c.isAssignableFrom(m_instance.getClass()); }
+	public boolean isuserdata(Class<?> c) { return c.isAssignableFrom(m_instance.getClass()); }
 
 	@Override
 	public Object touserdata() { return m_instance; }
 
-	@Override
-	public Object touserdata(Class c) { return c.isAssignableFrom(m_instance.getClass())? m_instance: null; }
+	@SuppressWarnings("unchecked")
+    @Override
+	public <T> T touserdata(Class<T> c) { return c.isAssignableFrom(m_instance.getClass())? (T) m_instance: null; }
 
 	@Override
 	public Object optuserdata(Object defval) { return m_instance; }
 
+    @SuppressWarnings("unchecked")
 	@Override
-	public Object optuserdata(Class c, Object defval) {
+	public <T> T optuserdata(Class<T> c, T defval) {
 		if (!c.isAssignableFrom(m_instance.getClass()))
 			typerror(c.getName());
-		return m_instance;
+		return (T) m_instance;
 	}
 
 	@Override
@@ -97,11 +99,13 @@ public class LuaUserdata extends LuaValue {
 		return m_instance;
 	}
 
-	@Override
-	public Object checkuserdata(Class c) {
+	@SuppressWarnings("unchecked")
+    @Override
+	public <T> T checkuserdata(Class<T> c) {
 		if (c.isAssignableFrom(m_instance.getClass()))
-			return m_instance;
-		return typerror(c.getName());
+			return (T) m_instance;
+		typerror(c.getName());
+        throw new AssertionError("[unreachable]");
 	}
 
 	@Override

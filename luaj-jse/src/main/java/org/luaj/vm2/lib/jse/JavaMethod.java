@@ -100,7 +100,7 @@ class JavaMethod extends JavaMember {
 		try {
 			return CoerceJavaToLua.coerce(method.invoke(instance, a));
 		} catch (InvocationTargetException e) {
-			throw new LuaError(e.getTargetException());
+			throw new LuaError.LuaVMError(e.getTargetException());
 		} catch (Exception e) {
 			return LuaValue.error("coercion error " + e);
 		}

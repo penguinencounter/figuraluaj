@@ -168,7 +168,7 @@ abstract public class LibFunction extends LuaFunction {
 	 * @param names   array of String names, one for each function.
 	 * @see #bind(LuaValue, Class, String[], int)
 	 */
-	protected void bind(LuaValue env, Class factory, String[] names) {
+	protected <F extends LibFunction> void bind(LuaValue env, Class<F> factory, String[] names) {
 		bind(env, factory, names, 0);
 	}
 
@@ -184,10 +184,10 @@ abstract public class LibFunction extends LuaFunction {
 	 * @param firstopcode the first opcode to use
 	 * @see #bind(LuaValue, Class, String[])
 	 */
-	protected void bind(LuaValue env, Class factory, String[] names, int firstopcode) {
+	protected <F extends LibFunction> void bind(LuaValue env, Class<F> factory, String[] names, int firstopcode) {
 		try {
 			for (int i = 0, n = names.length; i < n; i++) {
-				LibFunction f = (LibFunction) factory.newInstance();
+				LibFunction f = factory.newInstance();
 				f.opcode = firstopcode+i;
 				f.name = names[i];
 				env.set(f.name, f);

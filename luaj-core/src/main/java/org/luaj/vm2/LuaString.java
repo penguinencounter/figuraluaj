@@ -407,7 +407,8 @@ public class LuaString extends LuaValue {
 	public boolean lt_b(LuaValue rhs) { return rhs.isstring()? rhs.strcmp(this) > 0: super.lt_b(rhs); }
 
 	@Override
-	public boolean lt_b(int rhs) { typerror("attempt to compare string with number"); return false; }
+	public boolean lt_b(int rhs) {
+        throw new LuaError.LuaOperationTypeError("compare", TSTRING, "string", TNUMBER, "number"); }
 
 	@Override
 	public boolean lt_b(double rhs) { typerror("attempt to compare string with number"); return false; }

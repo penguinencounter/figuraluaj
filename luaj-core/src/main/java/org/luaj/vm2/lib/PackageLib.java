@@ -382,7 +382,7 @@ public class PackageLib extends TwoArgFunction {
 		public Varargs invoke(Varargs args) {
 			String name = args.checkjstring(1);
 			String classname = toClassname(name);
-			Class c = null;
+			Class<?> c = null;
 			LuaValue v = null;
 			try {
 				c = Class.forName(classname);

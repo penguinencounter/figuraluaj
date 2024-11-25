@@ -55,7 +55,7 @@ class JavaInstance extends LuaUserdata {
 			try {
 				return CoerceJavaToLua.coerce(f.get(m_instance));
 			} catch (Exception e) {
-				throw new LuaError(e);
+				throw new LuaError.LuaVMError(e);
 			}
 		LuaValue m = jclass.getMethod(key);
 		if (m != null)
@@ -76,7 +76,7 @@ class JavaInstance extends LuaUserdata {
 				f.set(m_instance, CoerceLuaToJava.coerce(value, f.getType()));
 				return;
 			} catch (Exception e) {
-				throw new LuaError(e);
+				throw new LuaError.LuaVMError(e);
 			}
 		super.set(key, value);
 	}

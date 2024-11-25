@@ -38,6 +38,111 @@ package org.luaj.vm2;
  * message of an object was not supplied.
  */
 public class LuaError extends RuntimeException {
+	/**
+	 * Thrown when indexing something that isn't indexable (e.g. nil)
+	 */
+	public static class LuaBadIndexTargetError extends LuaError {
+		public final int type;
+		public final String typename;
+		public final String key;
+
+		public LuaBadIndexTargetError(int type, String typename, String key) {
+			// This has to be lowercase for compatibility lmao
+			super(String.format("attempt to index ? (a %s value) with key '%s'", typename, key));
+			this.type = type;
+			this.typename = typename;
+			this.key = key;
+		}
+	}
+
+	/**
+	 * Thrown when e.g. trying to call something that isn't callable.
+	 */
+	public static class LuaBadOperatorTargetError extends LuaError {
+        public final String mtTarget;
+        public final String opFriendlyName;
+        public final int actualType;
+        public final String typeName;
+
+        public LuaBadOperatorTargetError(String mtTarget, String opFriendlyName, int actualType, String typeName) {
+			super(String.format("attempt to %s a %s value", opFriendlyName, typeName));
+            this.mtTarget = mtTarget;
+            this.opFriendlyName = opFriendlyName;
+            this.actualType = actualType;
+            this.typeName = typeName;
+        }
+	}
+
+	public static class LuaOperationTypeError extends LuaError {
+        public final String opFriendlyName;
+        public final int leftType;
+        public final String leftTypeName;
+        public final int rightName;
+        public final String rightTypeName;
+
+        public LuaOperationTypeError(String opFriendlyName, int leftType, String leftTypeName, int rightName, String rightTypeName) {
+			super(String.format("attempt to %s %s with %s", opFriendlyName, leftType, leftTypeName));
+            this.opFriendlyName = opFriendlyName;
+            this.leftType = leftType;
+            this.leftTypeName = leftTypeName;
+            this.rightName = rightName;
+            this.rightTypeName = rightTypeName;
+        }
+	}
+
+	public static class LuaTypeError extends LuaError {
+		public final int type;
+		public final String typename;
+		public final int targetType;
+		public final String targetTypeName;
+
+        public LuaTypeError(int type, String typename, int targetType, String targetTypeName) {
+            this(type, typename, targetType, targetTypeName, "type");
+        }
+
+        public LuaTypeError(int type, String typename, int targetType, String targetTypeName, String kind) {
+            super(String.format("%s: %s expected, got %s", kind, targetTypeName, typename));
+
+            this.type = type;
+			this.typename = typename;
+			this.targetType = targetType;
+			this.targetTypeName = targetTypeName;
+        }
+	}
+
+	public static class LuaVMError extends LuaError {
+		public LuaVMError(Throwable cause) {
+			super(cause);
+		}
+
+		public LuaVMError(String message) {
+			super(message);
+		}
+
+		public LuaVMError(String message, int level) {
+			super(message, level);
+		}
+	}
+
+	public static class LuaUserError extends LuaError {
+
+		public LuaUserError(Throwable cause) {
+			super(cause);
+		}
+
+		public LuaUserError(String message) {
+			super(message);
+		}
+
+		public LuaUserError(String message, int level) {
+			super(message, level);
+		}
+
+		public LuaUserError(LuaValue message_object) {
+			super(message_object);
+		}
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	protected int level;

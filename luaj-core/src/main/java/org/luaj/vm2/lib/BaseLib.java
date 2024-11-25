@@ -192,10 +192,10 @@ public class BaseLib extends TwoArgFunction implements ResourceFinder {
 		@Override
 		public LuaValue call(LuaValue arg1, LuaValue arg2) {
 			if (arg1.isnil())
-				throw new LuaError(NIL);
+				throw new LuaError.LuaUserError(NIL);
 			if (!arg1.isstring() || arg2.optint(1) == 0)
-				throw new LuaError(arg1);
-			throw new LuaError(arg1.tojstring(), arg2.optint(1));
+				throw new LuaError.LuaUserError(arg1);
+			throw new LuaError.LuaUserError(arg1.tojstring(), arg2.optint(1));
 		}
 	}
 

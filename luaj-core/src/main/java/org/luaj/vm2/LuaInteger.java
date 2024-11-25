@@ -342,7 +342,8 @@ public class LuaInteger extends LuaNumber {
 
 	// string comparison
 	@Override
-	public int strcmp(LuaString rhs) { typerror("attempt to compare number with string"); return 0; }
+	public int strcmp(LuaString rhs) {
+        throw new LuaError.LuaOperationTypeError("compare", TNUMBER, "number", TSTRING, "string"); }
 
 	@Override
 	public int checkint() {

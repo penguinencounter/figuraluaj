@@ -103,6 +103,18 @@ public class LuaThread extends LuaValue {
 	/** Error message handler for this thread, if any. */
 	public LuaValue errorfunc;
 
+	@FunctionalInterface
+	public interface LuaErrorHandler {
+		LuaValue handle(String message, LuaError errorObj);
+	}
+
+	/**
+	 * Java-based error object handler for this thread, if any.
+	 * Takes priority over <code>errorfunc</code> for handling errors.
+	 */
+	public LuaErrorHandler errorfunc_adv;
+
+
 	/** Private constructor for main thread only */
 	public LuaThread(Globals globals) {
 		state = new State(globals, this, null);

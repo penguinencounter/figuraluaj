@@ -618,16 +618,29 @@ public class LuaClosure extends LuaFunction {
 		if (globals == null)
 			return msg;
 		final LuaThread r = globals.running;
-		if (r.errorfunc == null)
+		if (r.errorfunc_adv == null && r.errorfunc == null)
 			return globals.debuglib != null? msg + "\n" + globals.debuglib.traceback(level): msg;
+		final LuaThread.LuaErrorHandler errorHandler = r.errorfunc_adv;
 		final LuaValue e = r.errorfunc;
 		r.errorfunc = null;
-		try {
-			return e.call(LuaValue.valueOf(msg)).tojstring();
-		} catch (Throwable t) {
-			return "error in error handling";
-		} finally {
-			r.errorfunc = e;
+		r.errorfunc_adv = null;
+		if (errorHandler != null) {
+			try {
+				return errorHandler.handle(msg, le).tojstring();
+			} catch (Throwable t) {
+				return String.format("While handling this error:\n%s\n...an internal error occured:\n%s", msg, t);
+			} finally {
+				r.errorfunc_adv = errorHandler;
+				r.errorfunc = e;
+			}
+		} else {
+			try {
+				return e.call(LuaValue.valueOf(msg)).tojstring();
+			} catch (Throwable t) {
+				return "error in error handling";
+			} finally {
+				r.errorfunc = e;
+			}
 		}
 	}
 

@@ -423,7 +423,9 @@ public class BaseLib extends TwoArgFunction implements ResourceFinder {
 		public Varargs invoke(Varargs args) {
 			final LuaThread t = globals.running;
 			final LuaValue preverror = t.errorfunc;
+			final LuaThread.LuaErrorHandler prevjavaerror = t.errorfunc_adv;
 			t.errorfunc = args.checkvalue(2);
+			t.errorfunc_adv = null;
 			try {
 				if (globals != null && globals.debuglib != null)
 					globals.debuglib.onCall(this);
@@ -441,6 +443,7 @@ public class BaseLib extends TwoArgFunction implements ResourceFinder {
 				}
 			} finally {
 				t.errorfunc = preverror;
+				t.errorfunc_adv = prevjavaerror;
 			}
 		}
 	}

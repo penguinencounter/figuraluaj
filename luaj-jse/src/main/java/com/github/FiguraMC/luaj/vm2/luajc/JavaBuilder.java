@@ -77,7 +77,7 @@ public class JavaBuilder {
 	private static final String STR_LUATABLE    = LuaTable.class.getName();
 	private static final String STR_BUFFER      = Buffer.class.getName();
 	private static final String STR_STRING      = String.class.getName();
-	private static final String STR_JSEPLATFORM = "jse.lib.com.github.FiguraMC.luaj.vm2.JsePlatform";
+	private static final String STR_JSEPLATFORM = "com.github.FiguraMC.luaj.vm2.lib.jse.JsePlatform";
 
 	private static final ObjectType TYPE_VARARGS    = new ObjectType(STR_VARARGS);
 	private static final ObjectType TYPE_LUAVALUE   = new ObjectType(STR_LUAVALUE);

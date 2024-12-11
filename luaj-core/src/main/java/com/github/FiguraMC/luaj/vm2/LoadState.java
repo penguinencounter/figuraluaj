@@ -66,7 +66,7 @@ import java.io.InputStream;
  * 	Globals globals = JsePlatform.standardGlobals();
  * 	Prototype p = globals.compilePrototype(new StringReader("print('hello, world')"), "main.lua");
  * 	ByteArrayOutputStream o = new ByteArrayOutputStream();
- * 	compiler.com.github.FiguraMC.luaj.vm2.DumpState.dump(p, o, false);
+ * 	com.github.FiguraMC.luaj.vm2.compiler.DumpState.dump(p, o, false);
  * 	byte[] lua_binary_file_bytes = o.toByteArray();
  * }
  * </pre>

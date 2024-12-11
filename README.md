@@ -365,7 +365,7 @@ To exclude the lua-to-lua-bytecode compiler, do not call
 but instead initialize globals with including only those libraries 
 that are needed and omitting the line:
 <pre>
-	compiler.com.github.FiguraMC.luaj.vm2.LuaC.install(globals);
+	com.github.FiguraMC.luaj.vm2.compiler.LuaC.install(globals);
 </pre>
 
 
@@ -566,7 +566,7 @@ create globals that contain the debug library in addition to the other standard 
 
 To install dynamically from lua use java-class-based require:</em>:
 <pre>
-	require 'lib.com.github.FiguraMC.luaj.vm2.DebugLib'
+	require 'com.github.FiguraMC.luaj.vm2.lib.DebugLib'
 </pre>
 
 The <em>lua</em> command line utility includes the <em>debug</em> library by default.
@@ -666,11 +666,11 @@ The simplest way to implement a function is to choose a base class based on the 
 LuaJ provides 5 base classes for this purpose, depending if the function has 0, 1, 2, 3 or variable arguments, 
 and if it provide multiple return values.   
 <pre>
-	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/ZeroArgFunction.html">lib.com.github.FiguraMC.luaj.vm2.ZeroArgFunction</a>
-	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/OneArgFunction.html">lib.com.github.FiguraMC.luaj.vm2.OneArgFunction</a>
-	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/TwoArgFunction.html">lib.com.github.FiguraMC.luaj.vm2.TwoArgFunction</a>
-	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/ThreeArgFunction.html">lib.com.github.FiguraMC.luaj.vm2.ThreeArgFunction</a>
-	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/VarArgFunction.html">lib.com.github.FiguraMC.luaj.vm2.VarArgFunction</a>
+	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/ZeroArgFunction.html">com.github.FiguraMC.luaj.vm2.lib.ZeroArgFunction</a>
+	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/OneArgFunction.html">com.github.FiguraMC.luaj.vm2.lib.OneArgFunction</a>
+	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/TwoArgFunction.html">com.github.FiguraMC.luaj.vm2.lib.TwoArgFunction</a>
+	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/ThreeArgFunction.html">com.github.FiguraMC.luaj.vm2.lib.ThreeArgFunction</a>
+	 <a href="http://luaj.org/luaj/3.0/api/org/luaj/vm2/lib/VarArgFunction.html">com.github.FiguraMC.luaj.vm2.lib.VarArgFunction</a>
 </pre>
 
 Each of these functions has an abstract method that must be implemented, 

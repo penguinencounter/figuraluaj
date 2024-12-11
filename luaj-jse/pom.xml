@@ -46,7 +46,7 @@
 						<configuration>
 							<jdkVersion>1.8</jdkVersion>
 							<javadocFriendlyComments>true</javadocFriendlyComments>
-							<packageName>org.luaj.vm2.parser</packageName>
+							<packageName>com.github.FiguraMC.luaj.vm2.parser</packageName>
 							<sourceDirectory>src/main/javacc</sourceDirectory>
 							<outputDirectory>${project.build.directory}/generated-sources/javacc</outputDirectory>
 						</configuration>

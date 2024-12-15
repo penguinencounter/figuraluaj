@@ -14,13 +14,13 @@ import java.io.StringReader;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaClosure;
-import org.luaj.vm2.LuaFunction;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Prototype;
-import org.luaj.vm2.compiler.DumpState;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.LuaClosure;
+import org.figuramc.luaj.vm2.LuaFunction;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.Prototype;
+import org.figuramc.luaj.vm2.compiler.DumpState;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
 
 class DumpLoadEndianIntTest {
 	private static final String SAVECHUNKS = "SAVECHUNKS";

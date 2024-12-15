@@ -24,7 +24,7 @@ options {
 }
 
 PARSER_BEGIN(LuaParser)
-package org.luaj.vm2.parser.lua52;
+package org.figuramc.luaj.vm2.parser.lua52;
 
 public class LuaParser {
 

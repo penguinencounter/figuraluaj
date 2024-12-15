@@ -1,6 +1,6 @@
 package org.luaj.jse.require;
 
-import org.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.LuaValue;
 
 /**
  * This should fail while trying to load via "require() because it is not a

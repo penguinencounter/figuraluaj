@@ -24,9 +24,9 @@ package org.luaj.jse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
 
 class UTF8StreamTest {
 

@@ -21,11 +21,11 @@
  ******************************************************************************/
 package org.luaj.luajc;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Print;
-import org.luaj.vm2.Prototype;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.Print;
+import org.figuramc.luaj.vm2.Prototype;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
 
 /** Test the plain old bytecode interpreter */
 public class TestLuaJ {

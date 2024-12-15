@@ -7,9 +7,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.luaj.vm2.Print;
-import org.luaj.vm2.Prototype;
-import org.luaj.vm2.compiler.DumpState;
+import org.figuramc.luaj.vm2.Print;
+import org.figuramc.luaj.vm2.Prototype;
+import org.figuramc.luaj.vm2.compiler.DumpState;
 
 abstract class CompilingTestCase extends ResourcesTestCase {
 

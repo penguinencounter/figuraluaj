@@ -1,7 +1,7 @@
 package org.luaj.jse.require;
 
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.TwoArgFunction;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.lib.TwoArgFunction;
 
 /**
  * This should succeed as a library that can be loaded dynamically via

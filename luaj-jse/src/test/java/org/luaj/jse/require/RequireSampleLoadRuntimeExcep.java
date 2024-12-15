@@ -1,7 +1,7 @@
 package org.luaj.jse.require;
 
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.ZeroArgFunction;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.lib.ZeroArgFunction;
 
 /**
  * This should fail while trying to load via "require()" because it throws a

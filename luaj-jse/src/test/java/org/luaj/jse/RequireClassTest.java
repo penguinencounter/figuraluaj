@@ -9,10 +9,10 @@ import org.luaj.jse.require.RequireSampleClassCastExcep;
 import org.luaj.jse.require.RequireSampleLoadLuaError;
 import org.luaj.jse.require.RequireSampleLoadRuntimeExcep;
 import org.luaj.jse.require.RequireSampleSuccess;
-import org.luaj.vm2.LuaError;
-import org.luaj.vm2.LuaTable;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.LuaError;
+import org.figuramc.luaj.vm2.LuaTable;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
 
 class RequireClassTest {
 

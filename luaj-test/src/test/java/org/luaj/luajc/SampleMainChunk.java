@@ -1,9 +1,9 @@
 package org.luaj.luajc;
 
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Varargs;
-import org.luaj.vm2.lib.TwoArgFunction;
-import org.luaj.vm2.lib.VarArgFunction;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.Varargs;
+import org.figuramc.luaj.vm2.lib.TwoArgFunction;
+import org.figuramc.luaj.vm2.lib.VarArgFunction;
 
 public class SampleMainChunk extends VarArgFunction {
 

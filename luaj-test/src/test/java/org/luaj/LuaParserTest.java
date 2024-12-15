@@ -1,6 +1,6 @@
 package org.luaj;
 
-import org.luaj.vm2.parser.LuaParser;
+import org.figuramc.luaj.vm2.parser.LuaParser;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.fail;

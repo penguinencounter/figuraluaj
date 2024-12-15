@@ -30,12 +30,12 @@ import java.lang.ref.WeakReference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaThread;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.Varargs;
-import org.luaj.vm2.lib.OneArgFunction;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.LuaThread;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.Varargs;
+import org.figuramc.luaj.vm2.lib.OneArgFunction;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
 
 class OrphanedThreadTest {
 

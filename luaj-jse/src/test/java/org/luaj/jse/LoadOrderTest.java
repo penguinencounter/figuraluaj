@@ -27,11 +27,11 @@ import java.io.InputStream;
 import java.io.Reader;
 
 import org.junit.jupiter.api.Test;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaString;
-import org.luaj.vm2.lib.jse.JsePlatform;
-import org.luaj.vm2.server.Launcher;
-import org.luaj.vm2.server.LuajClassLoader;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.LuaString;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.server.Launcher;
+import org.figuramc.luaj.vm2.server.LuajClassLoader;
 
 // Tests using class loading orders that have caused problems for some use cases.
 class LoadOrderTest {

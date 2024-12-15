@@ -34,12 +34,12 @@ import java.nio.file.Files;
 import java.nio.file.OpenOption;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jme.JmePlatform;
-import org.luaj.vm2.lib.jse.JsePlatform;
-import org.luaj.vm2.lib.jse.JseProcess;
-import org.luaj.vm2.luajc.LuaJC;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.LuaValue;
+import org.figuramc.luaj.vm2.lib.jme.JmePlatform;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.lib.jse.JseProcess;
+import org.figuramc.luaj.vm2.luajc.LuaJC;
 
 abstract class PlatformTestCase extends ResourcesTestCase {
 	public static final boolean nocompile = "true".equals(System.getProperty("nocompile"));

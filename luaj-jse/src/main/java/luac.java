@@ -29,12 +29,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.Lua;
-import org.luaj.vm2.Print;
-import org.luaj.vm2.Prototype;
-import org.luaj.vm2.compiler.DumpState;
-import org.luaj.vm2.lib.jse.JsePlatform;
+import org.figuramc.luaj.vm2.Globals;
+import org.figuramc.luaj.vm2.Lua;
+import org.figuramc.luaj.vm2.Print;
+import org.figuramc.luaj.vm2.Prototype;
+import org.figuramc.luaj.vm2.compiler.DumpState;
+import org.figuramc.luaj.vm2.lib.jse.JsePlatform;
 
 /**
  * Compiler for lua files to lua bytecode.

@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.github.FiguraMC.luaj</groupId>
 		<artifactId>luaj-parent</artifactId>
-		<version>3.0.9-figura</version>
+		<version>3.1.0-figura</version>
 	</parent>
 
 	<artifactId>luaj-jse</artifactId>
